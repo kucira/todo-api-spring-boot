@@ -26,4 +26,9 @@ public class TodoService {
     todos.add(todo);
     return todo;
   }
+
+  public TodoDto deleteTodo(Integer indexArr) {
+    TodoDto todo = todos.get(indexArr);
+    return todo;
+  }
 }
