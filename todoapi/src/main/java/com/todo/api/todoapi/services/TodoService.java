@@ -31,4 +31,10 @@ public class TodoService {
     TodoDto todo = todos.get(indexArr);
     return todo;
   }
+
+  public TodoDto updateTodo(TodoDto todo) {
+    int index = todos.indexOf(todo);
+    todos.set(index, todo);
+    return todo;
+  }
 }

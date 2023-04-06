@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,5 +41,11 @@ public class TodoControllers {
   public TodoDto deleteTodo( @RequestParam String index) {
     Integer indexInt = Integer.parseInt(index);
     return this.todoService.deleteTodo(indexInt);
+  }
+
+  @PatchMapping(produces = "application/json")
+  public TodoDto updateTodo(@RequestBody TodoDto requestTodo) {
+    TodoDto todo = new TodoDto(requestTodo.getId(), requestTodo.getTitle(), requestTodo.getDescription());
+    return this.todoService.updateTodo(todo);
   }
 }
