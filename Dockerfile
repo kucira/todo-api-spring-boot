@@ -2,13 +2,13 @@ FROM eclipse-temurin:17-jdk-alpine as builder
 
 WORKDIR /opt/app
 
-COPY .mvn/ .mvn
-COPY mvnmw pom.xml ./
+COPY ./todoapi/.mvn/ .mvn
+COPY ./todoapi/mvnw ./todoapi/pom.xml ./
 
-RUN ./mvnm dependency:go-offline
+RUN ./mvnw dependency:go-offline
 
-COPY ./src ./src
-RUN ./mvnmw clean install
+COPY ./todoapi/src ./src
+RUN ./mvnw clean install
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /opt/app
